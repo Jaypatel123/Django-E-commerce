@@ -96,7 +96,9 @@
             </ul>
             <form method="get" action="{% url 'store' %}" class="search-form">
                 <div class="input-group">
-                    {{ form.query }}
+                    <div class="input-group-prepend">
+                        {{ form.query }}
+                    </div>
                     <button type="submit" class="btn btn-primary">Search</button>
                 </div>
             </form>
