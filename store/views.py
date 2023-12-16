@@ -24,7 +24,12 @@ def fetch_and_display_product(request):
                 rate=product_data['rating']['rate'],
                 count=product_data['rating']['count']
             )
+        form = ProductSearchForm(request.GET)
         all_products = Product.objects.all()
+        if form.is_valid():
+            query = form.cleaned_data['query']
+            if query:
+                all_products = all_products.filter(title__icontains=query)
         # Pagination
         page = request.GET.get('page', 1)
         paginator = Paginator(all_products, 10)
@@ -35,10 +40,11 @@ def fetch_and_display_product(request):
         except EmptyPage:
             paginated_products = paginator.page(paginator.num_pages)
         # Render a template with the fetched data
-        return render(request, 'store/store.html', {'paginated_products': paginated_products})
+        return render(request, 'store/store.html', {'paginated_products': paginated_products, 'form': form})
 
     # Handle errors appropriately
     return render(request, 'store/store.html')
+
 
 # def store(request):
 #     all_products = Product.objects.all()

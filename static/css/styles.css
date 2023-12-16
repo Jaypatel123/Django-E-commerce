@@ -6,6 +6,33 @@
     
 }
 
+.search-form {
+    display: flex;  /* Display form elements in a row */
+    align-items: center;  /* Align items vertically centered */
+}
+
+.input-group {
+    display: flex;
+    margin-right: 10px;  /* Adjust as needed for spacing */
+}
+
+/* Style for the search input */
+.input-group input {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-right: -1px;  /* Adjust for border */
+}
+
+/* Style for the search button */
+.input-group button {
+    padding: 8px 12px;
+    border: 1px solid #007bff;  /* Change color as needed */
+    background-color: #007bff;  /* Change color as needed */
+    color: #fff;  /* Text color */
+    border-radius: 0 4px 4px 0;
+    cursor: pointer;
+}
 
 
 
