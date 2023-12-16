@@ -3,6 +3,7 @@ import requests
 from . models import Category, Product
 from django.shortcuts import get_object_or_404
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from .forms import ProductSearchForm
 
 
 def fetch_and_display_product(request):
@@ -58,6 +59,18 @@ def product_info(request, product_slug):
     context = {'product': product}
     return render(request, 'store/product-info.html', context)
 
+
+
+def product_list(request):
+    form = ProductSearchForm(request.GET)
+    products = Product.objects.all()
+
+    if form.is_valid():
+        query = form.cleaned_data['query']
+        if query:
+            products = products.filter(title__icontains=query)
+
+    return render(request, 'store/product_list.html', {'products': products, 'form': form})
 
 
 

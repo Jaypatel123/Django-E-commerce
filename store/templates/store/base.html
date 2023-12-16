@@ -105,6 +105,10 @@
             </ul>
 
         </div>
+        <form method="get" action="{% url 'store' %}">
+            {{ form.as_p }}
+            <button type="submit">Search</button>
+        </form>
 
 
         <div class="collapse navbar-collapse text-center" id="navbarNavDropdown">

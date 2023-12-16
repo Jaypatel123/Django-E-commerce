@@ -24,12 +24,12 @@ class Product(models.Model):
     # category = models.ForeignKey(Category, related_name='product', on_delete=models.CASCADE, null=True)
     category = models.CharField(max_length=255)
     image = models.URLField()
+    # image = models.ImageField(upload_to='images/')    
     rate = models.FloatField()
     count = models.IntegerField()
     
     brand = models.CharField(max_length=250, default='un-branded')
     slug = models.SlugField(max_length=255)
-    # image = models.ImageField(upload_to='images/')    
     class Meta:
         verbose_name_plural = 'products'
     def __str__(self):
